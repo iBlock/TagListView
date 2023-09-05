@@ -142,9 +142,16 @@ open class TagView: UIButton {
             removeButton.lineWidth = removeIconLineWidth
         }
     }
+    
     @IBInspectable open var removeIconLineColor: UIColor = UIColor.white.withAlphaComponent(0.54) {
         didSet {
             removeButton.lineColor = removeIconLineColor
+        }
+    }
+    
+    @IBInspectable open var removeIconPaddingX: CGFloat = 5 {
+        didSet {
+            updateRightInsets()
         }
     }
     
@@ -199,7 +206,7 @@ open class TagView: UIButton {
     
     private func updateRightInsets() {
         if enableRemoveButton {
-            titleEdgeInsets.right = paddingX  + removeButtonIconSize + paddingX
+            titleEdgeInsets.right = removeIconPaddingX  + removeButtonIconSize + paddingX
         }
         else {
             titleEdgeInsets.right = paddingX
