@@ -196,6 +196,15 @@ open class TagListView: UIView {
         }
     }
     
+    @IBInspectable open var removeIconPaddingX: CGFloat = 5 {
+        didSet {
+            defer { rearrangeViews() }
+            tagViews.forEach {
+                $0.removeIconPaddingX = removeIconPaddingX
+            }
+        }
+    }
+    
     @objc open dynamic var textFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             defer { rearrangeViews() }
