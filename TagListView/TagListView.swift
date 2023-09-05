@@ -196,12 +196,9 @@ open class TagListView: UIView {
         }
     }
     
-    @IBInspectable open var removeIconPaddingX: CGFloat = 5 {
+    @IBInspectable open dynamic var removeIconPaddingX: CGFloat = 5 {
         didSet {
-            defer { rearrangeViews() }
-            tagViews.forEach {
-                $0.removeIconPaddingX = removeIconPaddingX
-            }
+            rearrangeViews()
         }
     }
     
@@ -363,6 +360,7 @@ open class TagListView: UIView {
         tagView.removeButtonIconSize = removeButtonIconSize
         tagView.enableRemoveButton = enableRemoveButton
         tagView.removeIconLineColor = removeIconLineColor
+        tagView.removeIconPaddingX = removeIconPaddingX
         tagView.addTarget(self, action: #selector(tagPressed(_:)), for: .touchUpInside)
         tagView.removeButton.addTarget(self, action: #selector(removeButtonPressed(_:)), for: .touchUpInside)
         
